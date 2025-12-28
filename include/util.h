@@ -10,3 +10,16 @@ inline char to_hex(unsigned i)
     else
         return '?';
 }
+
+
+inline bool is_xip(const void *addr)
+{
+    return (addr >= (void *)XIP_BASE) && (addr < (void *)SRAM_BASE);
+}
+
+
+inline bool is_ram(const void *addr)
+{
+    return (addr >= (void *)SRAM_BASE) && (addr < (void *)SRAM_END);
+}
+
