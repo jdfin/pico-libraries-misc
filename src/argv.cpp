@@ -6,8 +6,8 @@
 #include <cstring>
 #include <ctype.h>
 
-Argv::Argv()
-    : _verbosity(0)
+Argv::Argv(int verbosity)
+    : _verbosity(verbosity)
 {
     reset();
 }

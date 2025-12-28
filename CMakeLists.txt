@@ -23,3 +23,5 @@ target_link_libraries(misc INTERFACE
     hardware_pwm    # pwm_irq_mux
     hardware_timer  # sys_led
 )
+
+add_subdirectory(test)

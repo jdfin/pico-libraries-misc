@@ -3,7 +3,7 @@
 class Argv {
 
 public:
-    Argv();
+    Argv(int verbosity=0);
 
     void reset();
 
