@@ -1,5 +1,7 @@
 #pragma once
 
+#include "pico/stdlib.h"
+
 
 inline char to_hex(unsigned i)
 {
@@ -33,4 +35,15 @@ inline const void *xip_nocache(const void *xip_adrs)
         xip_adrs = reinterpret_cast<void *>(xip);
     }
     return xip_adrs;
+}
+
+
+inline const char *mem_name(const void *p)
+{
+    if (is_ram(p))
+        return "RAM";
+    else if (is_xip(p))
+        return "XIP";
+    else
+        return "???";
 }
