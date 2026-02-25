@@ -4,11 +4,11 @@ target_sources(misc INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}/src/argv.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/assert.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/buf_log.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/dma_x.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/dma_extra.c
     ${CMAKE_CURRENT_LIST_DIR}/src/dump.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/i2c_x.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/i2c_extra.c
     ${CMAKE_CURRENT_LIST_DIR}/src/pretty_io.c
-    ${CMAKE_CURRENT_LIST_DIR}/src/pwm_x.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/pwm_extra.c
     ${CMAKE_CURRENT_LIST_DIR}/src/str_ops.c
     ${CMAKE_CURRENT_LIST_DIR}/src/sys_led.cpp
 )

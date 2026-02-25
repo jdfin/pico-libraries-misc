@@ -1,4 +1,4 @@
-#include "pwm_x.h"
+#include "pwm_extra.h"
 
 #include <assert.h>
 #include <stdint.h>

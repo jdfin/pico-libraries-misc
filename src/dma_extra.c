@@ -1,4 +1,4 @@
-#include "dma_x.h"
+#include "dma_extra.h"
 
 #include <assert.h>
 #include <stdint.h>

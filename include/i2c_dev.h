@@ -6,7 +6,7 @@
 #include "hardware/i2c.h"
 #include "pico/stdlib.h"
 // misc
-#include "i2c_x.h"
+#include "i2c_extra.h"
 
 
 class I2cDev
