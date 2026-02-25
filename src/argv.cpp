@@ -43,7 +43,7 @@ void Argv::print() const
     printf("argc=%d argv=[", cnt);
 
     for (int tok = 0; tok < cnt; tok++)
-        printf(" %s", (*this)[tok]);
+        printf(" %s", (*this)[tok] ? (*this)[tok] : "(null)");
 
     printf(" ]\n");
 }
