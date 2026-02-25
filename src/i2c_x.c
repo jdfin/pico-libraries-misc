@@ -4,7 +4,7 @@
 #include "hardware/i2c.h"
 #include "pico/stdlib.h"
 // misc
-#include "i2c_extra.h"
+#include "i2c_x.h"
 
 
 // Functions here support non-blocking i2c operations, with the significant

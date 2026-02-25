@@ -11,7 +11,7 @@
 #include "gt911.h"
 // misc
 #include "dbg_gpio.h"
-#include "i2c_extra.h"
+#include "i2c_x.h"
 
 static constexpr bool show_timing = false;
 
