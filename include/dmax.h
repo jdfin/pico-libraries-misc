@@ -18,18 +18,18 @@ extern "C" {
 
 
 // install a handler
-extern void dma_irq_mux_connect(uint irqn, uint channel_num,
-                                void (*func)(void *), void *arg);
+extern void dmax_connect(uint irqn, uint channel_num,
+                         void (*func)(void *), void *arg);
 
 
 // enable/disable interrupts for a channel
-static inline void dma_irq_mux_enable(uint irqn, uint channel, bool enable)
+static inline void dmax_enable(uint irqn, uint channel, bool enable)
 {
     dma_irqn_set_channel_enabled(irqn, channel, enable);
 }
 
 // trigger an interrupt for a channel
-static inline void dma_irqn_mux_force(uint irqn, uint channel, bool force)
+static inline void dmax_irqn_force(uint irqn, uint channel, bool force)
 {
     if (force)
         dma_hw->irq_ctrl[irqn].intf |= (1u << channel);

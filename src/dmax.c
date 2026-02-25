@@ -1,4 +1,4 @@
-#include "dma_irq_mux.h"
+#include "dmax.h"
 
 #include <stdint.h>
 #include <strings.h> // ffs()
@@ -32,7 +32,7 @@ static void dma_irq0_handler()
         int channel = ffs(active) - 1; // ffs() returns 1..16; channel is 0..15
         dma_irqn_acknowledge_channel(0, channel);
         active &= ~(1 << channel); // clear bit in active
-        dma_irqn_mux_force(0, channel, false); // if it was forced, clear the force
+        dmax_irqn_force(0, channel, false); // if it was forced, clear the force
         dma_irq_mux_handlers[0][channel].func(
             dma_irq_mux_handlers[0][channel].arg);
     }
@@ -47,6 +47,7 @@ static void dma_irq1_handler()
         int channel = ffs(active) - 1; // ffs() returns 1..16; channel is 0..15
         dma_irqn_acknowledge_channel(1, channel);
         active &= ~(1 << channel); // clear bit in active
+        dmax_irqn_force(1, channel, false); // if it was forced, clear the force
         dma_irq_mux_handlers[1][channel].func(
             dma_irq_mux_handlers[1][channel].arg);
     }
@@ -54,7 +55,7 @@ static void dma_irq1_handler()
 
 
 // Install a handler for a channel: void my_handler(void *arg)
-void dma_irq_mux_connect(uint irqn, uint channel, void (*func)(void *), void *arg)
+void dmax_connect(uint irqn, uint channel, void (*func)(void *), void *arg)
 {
     static int init = 0;
 
