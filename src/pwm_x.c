@@ -2,7 +2,7 @@
 #include <strings.h> // ffs()
 #include "hardware/irq.h"
 #include "hardware/pwm.h"
-#include "pwm_irq_mux.h"
+#include "pwm_x.h"
 
 
 // handlers for 8 slices
@@ -14,7 +14,7 @@ static volatile struct {
 
 // The actual pwm interrupt handler. Figure out which slice interrupted and
 // call the user-installed handler for that slice.
-void pwm_irq_handler()
+static void pwm_irq_handler()
 {
     uint32_t active = pwm_get_irq_status_mask();
 

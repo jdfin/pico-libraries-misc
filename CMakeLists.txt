@@ -8,7 +8,7 @@ target_sources(misc INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}/src/dump.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/i2c_extra.c
     ${CMAKE_CURRENT_LIST_DIR}/src/pretty_io.c
-    ${CMAKE_CURRENT_LIST_DIR}/src/pwm_irq_mux.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/pwm_x.c
     ${CMAKE_CURRENT_LIST_DIR}/src/str_ops.c
     ${CMAKE_CURRENT_LIST_DIR}/src/sys_led.cpp
 )
@@ -23,8 +23,8 @@ target_link_libraries(misc INTERFACE
     hardware_dma    # dma_irq_mux
     hardware_gpio   # dbg_gpio, sys_led
     hardware_i2c    # i2c_extra
-    hardware_irq    # pwm_irq_mux
-    hardware_pwm    # pwm_irq_mux
+    hardware_irq    # pwm_x
+    hardware_pwm    # pwm_x
     hardware_timer  # sys_led
 )
 
