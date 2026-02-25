@@ -84,16 +84,16 @@ int main()
 
 
 // Timing:
-//     2.2 usec to initiate the read (i2c_wr_rd_start)
+//     2.2 usec to initiate the read (i2c_write_read_start)
 //   135.5 usec waiting for i2c to finish (polling i2c_running)
-//     0.5 usec to read status byte from fifo (i2c_wr_rd_check)
+//     0.5 usec to read status byte from fifo (i2c_write_read_check)
 static uint8_t read_status(i2c_inst_t *i2c)
 {
 
     uint8_t wr_buf[] = {0x81, 0x4e}; // TOUCH_STAT
     int wr_len = sizeof(wr_buf);
     int rd_len = 1;
-    i2c_wr_rd_start(i2c, tp_i2c_addr, wr_buf, wr_len, rd_len);
+    i2c_write_read_start(i2c, tp_i2c_addr, wr_buf, wr_len, rd_len);
 
     uint32_t t0_us;
     uint32_t t1_us;
@@ -111,7 +111,7 @@ static uint8_t read_status(i2c_inst_t *i2c)
 
     uint8_t rd_buf[8];
     int rd_max = sizeof(rd_buf);
-    int rd_cnt = i2c_wr_rd_check(i2c, rd_buf, rd_max);
+    int rd_cnt = i2c_write_read_check(i2c, rd_buf, rd_max);
 
     if constexpr (show_timing) {
         printf("i2c_extra_test: read in %lu usec; %d bytes:", //
@@ -131,7 +131,7 @@ static void write_status(i2c_inst_t *i2c, uint8_t status)
     int wr_len = sizeof(wr_buf);
     int rd_len = 0;
 
-    i2c_wr_rd_start(i2c, tp_i2c_addr, wr_buf, wr_len, rd_len);
+    i2c_write_read_start(i2c, tp_i2c_addr, wr_buf, wr_len, rd_len);
 
     uint32_t t0_us = time_us_32();
 
@@ -150,7 +150,7 @@ static void read_touch(i2c_inst_t *i2c, int &x, int &y)
     uint8_t wr_buf[] = {0x81, 0x50}; // TOUCH_1
     int wr_len = sizeof(wr_buf);
     int rd_len = 4;
-    i2c_wr_rd_start(i2c, tp_i2c_addr, wr_buf, wr_len, rd_len);
+    i2c_write_read_start(i2c, tp_i2c_addr, wr_buf, wr_len, rd_len);
 
     uint32_t t0_us = time_us_32();
 
@@ -161,7 +161,7 @@ static void read_touch(i2c_inst_t *i2c, int &x, int &y)
 
     uint8_t rd_buf[8];
     int rd_max = sizeof(rd_buf);
-    int rd_cnt = i2c_wr_rd_check(i2c, rd_buf, rd_max);
+    int rd_cnt = i2c_write_read_check(i2c, rd_buf, rd_max);
 
     if constexpr (show_timing) {
         printf("i2c_extra_test: read in %lu usec; %d bytes:", //

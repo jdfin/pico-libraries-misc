@@ -65,7 +65,7 @@ public:
     {
         _rd_buf = rd_buf;
         _rd_len = rd_len;
-        i2c_wr_rd_start(_dev, addr, wr_buf, wr_len, rd_len);
+        i2c_write_read_start(_dev, addr, wr_buf, wr_len, rd_len);
         return 0;
     }
 
@@ -76,7 +76,7 @@ public:
 
     int write_read_async_check()
     {
-        return i2c_wr_rd_check(_dev, _rd_buf, _rd_len);
+        return i2c_write_read_check(_dev, _rd_buf, _rd_len);
     }
 
 private:
