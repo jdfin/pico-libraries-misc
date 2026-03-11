@@ -1,6 +1,23 @@
 
 add_compile_options(-Wall -Wextra -Werror)
 
+# args_test
+
+add_executable(args_test
+    args_test.cpp
+)
+
+pico_enable_stdio_uart(args_test 0)
+pico_enable_stdio_usb(args_test 1)
+
+target_link_libraries(args_test PRIVATE
+    pico_stdlib
+    pico_stdio_usb
+    misc
+)
+
+pico_add_extra_outputs(args_test)
+
 # argv_demo
 
 add_executable(argv_demo
