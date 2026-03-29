@@ -57,7 +57,7 @@ public:
 
 private:
 
-    static constexpr int line_cnt = 16;
+    static constexpr int line_cnt = 256;
 
     static char _log[line_cnt][line_len];
 
