@@ -17,6 +17,7 @@
 extern "C" {
 #endif
 
+#define GPIOX_IRQ_EDGE_ANY (GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL)
 
 extern void gpiox_set_callback(uint gpio, //
                                void (*callback)(uint, uint32_t, intptr_t),
