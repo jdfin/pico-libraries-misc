@@ -46,6 +46,10 @@ static inline void dmax_irqn_set_channel_unforce(uint irqn, uint channel)
 }
 
 
+// abort, including errata workaround as noted in RP2040 manual
+extern void dmax_channel_abort(uint irqn, uint channel_num);
+
+
 #ifdef __cplusplus
 }
 #endif

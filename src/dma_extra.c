@@ -120,3 +120,19 @@ void dmax_irqn_set_channel_handler(uint irqn, uint channel,
     dma_irq_mux_handlers[irqn][channel].func = func;
     dma_irq_mux_handlers[irqn][channel].arg = arg;
 }
+
+
+void dmax_channel_abort(uint irqn, uint channel_num)
+{
+    // disable the channel on IRQn
+    dma_irqn_set_channel_enabled(irqn, channel_num, false);
+
+    // abort the channel
+    dma_channel_abort(channel_num);
+
+    // clear the spurious IRQ (in case there was one)
+    dma_irqn_acknowledge_channel(irqn, channel_num);
+
+    // re-enable the channel on IRQn
+    dma_irqn_set_channel_enabled(irqn, channel_num, true);
+}

@@ -7,6 +7,7 @@ target_sources(misc INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}/src/dma_extra.c
     ${CMAKE_CURRENT_LIST_DIR}/src/dump.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/gpio_extra.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/i2c_dev.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/i2c_extra.c
     ${CMAKE_CURRENT_LIST_DIR}/src/pretty_io.c
     ${CMAKE_CURRENT_LIST_DIR}/src/pwm_extra.c

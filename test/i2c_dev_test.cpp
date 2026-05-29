@@ -43,7 +43,7 @@ int main()
                 printf("%02x ", addr);
 
             uint8_t data;
-            int ret = i2c.read_sync(addr, &data, 1);
+            int ret = i2c.read_timeout_us(addr, &data, 1);
 
             printf(ret < 0 ? "." : "@");
             printf(addr % 16 == 15 ? "\n" : "  ");
