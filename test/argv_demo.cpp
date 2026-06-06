@@ -7,8 +7,8 @@
 #include "pico/stdlib.h"
 #include "pico/time.h"
 //
-#include "argv.h"
-#include "sys_led.h"
+#include "misc/argv.h"
+#include "misc/sys_led.h"
 
 // A command is a sequence of tokens, ending with newline.
 //

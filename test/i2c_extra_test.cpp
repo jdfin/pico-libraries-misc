@@ -8,10 +8,10 @@
 #include "pico/stdio_usb.h"
 #include "pico/stdlib.h"
 // touchscreen
-#include "gt911.h"
+#include "touchscreen/gt911.h"
 // misc
-#include "dbg_gpio.h"
-#include "i2c_extra.h"
+#include "misc/dbg_gpio.h"
+#include "misc/i2c_extra.h"
 
 static constexpr bool show_timing = false;
 

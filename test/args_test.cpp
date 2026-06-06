@@ -2,9 +2,9 @@
 #include <cassert>
 #include <cstdio>
 
-#include "args.h"
+#include "misc/args.h"
 #include "pico/stdlib.h"
-#include "sys_led.h"
+#include "misc/sys_led.h"
 
 
 static void args_test()

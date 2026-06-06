@@ -8,8 +8,8 @@
 #include "hardware/irq.h"
 #include "pico/stdlib.h"
 // misc
-#include "i2c_dev.h"
-#include "i2c_extra.h"
+#include "misc/i2c_dev.h"
+#include "misc/i2c_extra.h"
 
 
 I2cDev::I2cDev(i2c_inst_t *i2c, int scl, int sda, int baud) :

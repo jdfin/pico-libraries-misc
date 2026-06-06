@@ -4,13 +4,13 @@
 #include <cstdio>
 #include <cstring>
 
-#include "argv.h"
+#include "misc/argv.h"
 #include "pico/stdio.h"
 #include "pico/stdio_usb.h"
 #include "pico/stdlib.h"
 #include "pico/time.h"
-#include "str_ops.h"
-#include "sys_led.h"
+#include "misc/str_ops.h"
+#include "misc/sys_led.h"
 
 //////////////////////////////////////////////////////////////////////////////
 

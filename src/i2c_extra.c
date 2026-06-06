@@ -5,7 +5,7 @@
 #include "hardware/i2c.h"
 #include "pico/stdlib.h"
 // misc
-#include "i2c_extra.h"
+#include "misc/i2c_extra.h"
 
 
 // output/open-collector is achieved by setting the output value to zero,

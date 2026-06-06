@@ -8,7 +8,7 @@
 #include "hardware/i2c.h"
 #include "pico/stdlib.h"
 // misc
-#include "i2c_extra.h"
+#include "misc/i2c_extra.h"
 
 
 // This adds some asynchronous capabilities over using just the pico sdk's

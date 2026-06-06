@@ -1,9 +1,9 @@
 #include <cassert>
 #include <cstdio>
 #include "pico/stdlib.h"
-#include "sys_led.h"
-#include "bit_ops.h"
-#include "dbg_gpio.h"
+#include "misc/sys_led.h"
+#include "misc/bit_ops.h"
+#include "misc/dbg_gpio.h"
 
 // connect these together
 static const int dbg_gpio_out = 3;

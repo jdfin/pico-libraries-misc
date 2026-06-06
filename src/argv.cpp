@@ -8,7 +8,7 @@
 // pico
 #include "pico/stdlib.h"
 // misc
-#include "argv.h"
+#include "misc/argv.h"
 
 Argv::Argv(int verbosity) :
     _verbosity(verbosity)

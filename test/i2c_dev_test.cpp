@@ -8,7 +8,7 @@
 #include "pico/stdlib.h"
 #include "pico/time.h"
 // misc
-#include "i2c_dev.h"
+#include "misc/i2c_dev.h"
 
 static i2c_inst_t *i2c_dev = i2c1;
 static constexpr int sda_gpio = 14;

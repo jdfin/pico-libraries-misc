@@ -11,7 +11,7 @@
 #include "hardware/clocks.h" // clock_get_hz
 #include "hardware/pwm.h"
 //
-#include "gpio_extra.h"
+#include "misc/gpio_extra.h"
 
 
 //  PWM            +-----| USB |-----+            PWM

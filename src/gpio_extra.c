@@ -1,4 +1,4 @@
-#include "gpio_extra.h"
+#include "misc/gpio_extra.h"
 
 #include <assert.h>
 #include <stdint.h>
