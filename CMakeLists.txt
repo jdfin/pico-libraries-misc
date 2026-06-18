@@ -11,6 +11,7 @@ target_sources(misc INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}/src/i2c_extra.c
     ${CMAKE_CURRENT_LIST_DIR}/src/pretty_io.c
     ${CMAKE_CURRENT_LIST_DIR}/src/pwm_extra.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/stdio_extra.c
     ${CMAKE_CURRENT_LIST_DIR}/src/str_ops.c
     ${CMAKE_CURRENT_LIST_DIR}/src/sys_led.cpp
 )
@@ -21,6 +22,7 @@ target_include_directories(misc INTERFACE
 
 target_link_libraries(misc INTERFACE
     pico_stdlib     # (all)
+    pico_stdio_usb  # stdio_extra
     pico_status_led # sys_led
     hardware_dma    # dma_irq_mux
     hardware_gpio   # dbg_gpio, sys_led

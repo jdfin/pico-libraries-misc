@@ -29,3 +29,21 @@ extern void pwmx_irqn_set_slice_handler(uint irqn, uint slice,
 #ifdef __cplusplus
 }
 #endif
+
+#ifdef __cplusplus
+
+// useful for static configuration checking
+constexpr int pwmx_gpio_slice(int gpio)
+{
+    if (gpio < 32)
+        return (gpio >> 1) & 7;
+    else
+        return 8 + ((gpio >> 1) & 3);
+}
+
+constexpr int pwmx_gpio_channel(int gpio)
+{
+    return gpio & 1;
+}
+
+#endif
