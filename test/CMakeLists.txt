@@ -87,6 +87,23 @@ target_link_libraries(i2c_dev_test PRIVATE
 
 pico_add_extra_outputs(i2c_dev_test)
 
+# ibus_test
+
+add_executable(ibus_test
+    ibus_test.cpp
+)
+
+pico_enable_stdio_uart(ibus_test 0)
+pico_enable_stdio_usb(ibus_test 1)
+
+target_link_libraries(ibus_test PRIVATE
+    pico_stdlib
+    pico_stdio_usb
+    misc
+)
+
+pico_add_extra_outputs(ibus_test)
+
 # misc_test
 
 add_executable(misc_test
