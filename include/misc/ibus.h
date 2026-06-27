@@ -2,6 +2,9 @@
 
 #include <cassert>
 #include <cstdint>
+#include <climits>
+//
+#include "pico/stdlib.h"
 
 // 32-byte packets
 // Little-endian
@@ -20,7 +23,8 @@ class IBus
 public:
 
     IBus() :
-        _pkt_idx(0)
+        _pkt_idx(0),
+        _data_us(0)
     {
     }
 
@@ -32,6 +36,15 @@ public:
     // this is valid after data() returns true, and before it is called again
     uint16_t channel(int idx);
 
+    // how long since a valid packet was received
+    int data_ms() const
+    {
+        if (_data_us == 0)
+            return INT_MAX;
+        uint64_t age_us = time_us_64() - _data_us;
+        return (age_us + 500) / 1000;
+    }
+
 private:
 
     static constexpr uint8_t sync_0 = 0x20;
@@ -40,6 +53,9 @@ private:
     static constexpr int pkt_len = 32;
     uint8_t _pkt[pkt_len];
     int _pkt_idx;
+
+    // last time a valid packet was received
+    uint64_t _data_us;
 
     // (65535 - sum(_pkt[0-29])) should equal the uint16_t in _pkt[30-31]
     bool check_checksum();

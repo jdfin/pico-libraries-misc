@@ -32,7 +32,12 @@ bool IBus::data(uint8_t byte)
         // In theory, if the checksum fails we could have valid
         // sync bytes in the middle and should start there. Eh.
         _pkt_idx = 0;
-        return check_checksum();
+        if (check_checksum()) {
+            _data_us = time_us_64();
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
