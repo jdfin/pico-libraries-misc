@@ -14,9 +14,9 @@
 //
 #include "misc/ibus.h"
 
-static constexpr int uart_rx_gpio = 21;
-static constexpr int uart_baud = 115'200;
-static uart_inst_t * const uart_inst = uart1;
+static constexpr int uart_rx_gpio = 1;        // bike v0: 21, v1: 1
+static constexpr int uart_baud = 115'200;     //
+static uart_inst_t * const uart_inst = uart0; // bike v0: uart1, v1: uart0
 
 //////////////////////////////////////////////////////////////////////////////
 
