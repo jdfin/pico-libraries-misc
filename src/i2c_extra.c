@@ -181,4 +181,12 @@ void i2cx_write_raw(i2c_inst_t *i2c, uint8_t addr, const uint16_t *buf,
 
     // The transfer starts instantly. If a gpio is set after the first byte
     // is put in the fifo the start and gpio appear ~simultaneous on a scope.
+
+    // It may take a few microseconds for the I2C_IC_STATUS_ACTIVITY bit to
+    // actually assert, even though the fifo write above already happened.
+    // A caller that turns around and starts dma to the tx fifo (see I2cDev::
+    // write_start) needs that to have happened first, so wait here.
+    uint32_t start_us = time_us_32();
+    while (i2cx_running(i2c) == 0 && (time_us_32() - start_us) < 100)
+        tight_loop_contents();
 }
