@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include "hardware/dma.h"
 
 // RP2040 dma interrupt mux
@@ -18,24 +20,34 @@ extern "C" {
 
 
 // install a handler
-extern void dma_irq_mux_connect(uint irqn, uint channel_num,
-                                void (*func)(void *), void *arg);
+extern void dmax_irqn_set_channel_handler(uint irqn, uint channel_num,
+                                          void (*func)(intptr_t), intptr_t arg);
 
 
 // enable/disable interrupts for a channel
-static inline void dma_irq_mux_enable(uint irqn, uint channel, bool enable)
+static inline void dmax_irqn_set_channel_enabled(uint irqn, uint channel,
+                                                 bool enable)
 {
     dma_irqn_set_channel_enabled(irqn, channel, enable);
 }
 
+
 // trigger an interrupt for a channel
-static inline void dma_irqn_mux_force(uint irqn, uint channel, bool force)
+static inline void dmax_irqn_set_channel_force(uint irqn, uint channel)
 {
-    if (force)
-        dma_hw->irq_ctrl[irqn].intf |= (1u << channel);
-    else
-        dma_hw->irq_ctrl[irqn].intf &= ~(1u << channel);
+    dma_hw->irq_ctrl[irqn].intf |= (1u << channel);
 }
+
+
+// untrigger an interrupt for a channel
+static inline void dmax_irqn_set_channel_unforce(uint irqn, uint channel)
+{
+    dma_hw->irq_ctrl[irqn].intf &= ~(1u << channel);
+}
+
+
+// abort, including errata workaround as noted in RP2040 manual
+extern void dmax_channel_abort(uint irqn, uint channel_num);
 
 
 #ifdef __cplusplus

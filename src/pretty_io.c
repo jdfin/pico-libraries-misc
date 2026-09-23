@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
-#include "pretty_io.h"
+#include "misc/pretty_io.h"
 
 
 const char *pretty_hz(uint32_t hz)

@@ -1,7 +1,7 @@
 #include <cassert>
 #include <cstdio>
 
-#include "sys_led.h"
+#include "misc/sys_led.h"
 
 
 void __assert_func(const char *file, int line, const char *func,

@@ -1,7 +1,7 @@
 
 #include <cstdint>
 #include <cstdio>
-#include "dump.h"
+#include "misc/dump.h"
 
 using std::uintptr_t;
 

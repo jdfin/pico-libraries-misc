@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "str_ops.h"
+#include "misc/str_ops.h"
 
 
 int str_to_int(const char *str, int *i)
