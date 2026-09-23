@@ -21,7 +21,7 @@ I2cDev::I2cDev(i2c_inst_t *i2c, int scl, int sda, int baud) :
     // _dma_ch
     // _dma_cfg
 {
-    bool i2c_ok = i2cx_bus_clear(_scl, _sda);
+    [[maybe_unused]] bool i2c_ok = i2cx_bus_clear(_scl, _sda);
     assert(i2c_ok);
 
     _baud_actual = i2c_init(_i2c, _baud_request);
