@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+//
 #include "pico/stdlib.h"
 
 
@@ -27,12 +29,18 @@ inline bool is_ram(const void *addr)
 
 
 // convert an XIP address to an XIP address that won't update the cache
+//
+// XIP_BASE/XIP_NOCACHE_NOALLOC_BASE are used (rather than a hardcoded
+// address-bit-pattern trick) because the offset between the aliases is not
+// the same on every platform: on RP2040 XIP_NOCACHE_NOALLOC_BASE is
+// XIP_BASE + 0x03000000, but on RP2350 it's XIP_BASE + 0x04000000, so a
+// formula tuned for one silently computes a bogus address (landing in an
+// unrelated/unmapped region) on the other.
 inline const void *xip_nocache(const void *xip_adrs)
 {
     if (is_xip(xip_adrs)) {
-        uint32_t xip = reinterpret_cast<uint32_t>(xip_adrs);
-        xip = (xip & ~0x0f000000) | 0x03000000;
-        xip_adrs = reinterpret_cast<void *>(xip);
+        uintptr_t offset = reinterpret_cast<uintptr_t>(xip_adrs) - XIP_BASE;
+        xip_adrs = reinterpret_cast<const void *>(XIP_NOCACHE_NOALLOC_BASE + offset);
     }
     return xip_adrs;
 }
